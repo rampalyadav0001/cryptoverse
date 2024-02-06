@@ -5,6 +5,7 @@ import { useGetCryptosQuery } from '../services/Cryptoapi';
 import { Link } from 'react-router-dom';
 import Cryptocurrencies from './Cryptocurrencies';
 import News from './News';
+import Loader from './loder';
 const { Title } = Typography;
 
 const Homepage = () => {
@@ -12,7 +13,7 @@ const Homepage = () => {
    
     const globalStats = data?.data?.stats;
   
-    if (isFetching) return <p>loading...</p>;
+    if (isFetching) return <Loader/>;
 
   return (
     <>
@@ -31,7 +32,7 @@ const Homepage = () => {
         <Title level={2} className="home-title">Top 10 Cryptos In The World</Title>
         <Title level={3} className="show-more"><Link to="/cryptocurrencies">Show more</Link></Title>
       </div>
-      <Cryptocurrencies simplified />
+      <Cryptocurrencies simplified ={true} />
       <div className="home-heading-container">
         <Title level={2} className="home-title">Latest Crypto News</Title>
         <Title level={3}><Link to="/news">Show more</Link></Title>
